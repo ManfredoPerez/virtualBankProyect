@@ -105,12 +105,12 @@
             <img src="./vistas/img/compurpc.jpg" data-src="img/grow.jpg" alt="Plant" class="features_img lazy-img" />
             <!--  -->
             <!--  -->
-            <img src="./vistas/img/tarjetacre.avif" data-src="img/card.jpg" alt="Credit card" class="features_img lazy-img" />
+            <img src="./vistas/img/tarjetass.jpg" data-src="img/card.jpg" alt="Credit card" class="features_img lazy-img" />
 
             <div class="features_feature">
                 <div class="features_icon">
                     <svg>
-                        <use xlink:href="img/icons.svg#icon-credit-card"> <img src="./vistas/img/credit-cards.png" alt=""></use>
+                        <use xlink:href="img/icons.svg#icon-credit-card"> <img src="./vistas/img/credit-cards.png" alt=""> </use>
                     </svg>
                 </div>
                 <h5 class="features_header">Obtén tu cuenta gratis ahora</h5>
