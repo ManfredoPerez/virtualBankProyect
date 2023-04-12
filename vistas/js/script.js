@@ -71,7 +71,7 @@ document.addEventListener('keydown', function(e){
 const message = document.createElement('div');
 message.classList.add('cookie-message');
 message.innerHTML = 
-    'We use cookied for improved functionality and analytics. <button class="btn btn--close-cookie">Vamos!</button>'
+    'Bienvenido">Vamos!</button>'
 
 header.append(message);
 
