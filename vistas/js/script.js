@@ -71,7 +71,7 @@ document.addEventListener('keydown', function(e){
 const message = document.createElement('div');
 message.classList.add('cookie-message');
 message.innerHTML = 
-    'Bienvenido">Vamos!</button>'
+    'Bienvenido. <button class="btn btn--close-cookie">Vamos!</button>'
 
 header.append(message);
 

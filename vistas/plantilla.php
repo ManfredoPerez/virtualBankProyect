@@ -41,7 +41,7 @@
                 </li>
 
                 <li class="nav_item">
-                    <a href="bankAccount/index.html" class="nav_link nav_link--special">Ir a la cuenta</a>
+                    <a href="./vistas/datos/irCuenta.php" class="nav_link nav_link--special">Ir a la cuenta</a>
                 </li>
                 <li class="nav_itme">
                     <a href="#" class="nav_link nav_link--btn btn--show-modal">Login/Abrir Cuenta</a>

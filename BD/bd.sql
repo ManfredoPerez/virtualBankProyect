@@ -23,3 +23,24 @@ ALTER TABLE `infocliente`
 ALTER TABLE `infocliente`
   MODIFY `idCliente` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
+
+
+CREATE TABLE usuarios (    
+    id INT(11) NOT NULL,
+    numero_cuenta INT(15) NOT NULL,    
+    nombre_completo VARCHAR(255) NOT NULL,
+    correo_electronico VARCHAR(255) NOT NULL,    
+    saldo DECIMAL(10,2) NOT NULL DEFAULT '0.00',
+    PRIMARY KEY (numero_cuenta)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+    
+CREATE TABLE transferencias (
+    id INT(11) NOT NULL AUTO_INCREMENT,    
+    remitente_id INT(15) NOT NULL,
+    destinatario_id INT(15) NOT NULL,    
+    cantidad DECIMAL(10,2) NOT NULL DEFAULT '0.00',
+    fecha TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,    
+    PRIMARY KEY (id),
+    FOREIGN KEY (remitente_id) REFERENCES usuarios(numero_cuenta),    
+    FOREIGN KEY (destinatario_id) REFERENCES usuarios(numero_cuenta)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

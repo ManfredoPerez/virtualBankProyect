@@ -34,21 +34,18 @@ if(isset($_POST['cerrarSesion'])){
         <div class="menu-bar">
             <div class="menu">
 
-                <li class="search-box">
-                    <i class='bx bx-search icon'></i>
-                    <input type="text" placeholder="Buscar...">
-                </li>
 
-                <ul class="menu-links">
+
+                <ul class="menu-links"></ul>
                     <li class="nav-link">
                         <a href="#">
                             <i class='bx bx-home-alt icon' ></i>
-                            <span class="text nav-text">Operaciones</span>
+                            <span class="text nav-text">Inicio</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="transferencia.php">
                             <i class='bx bx-bar-chart-alt-2 icon' ></i>
                             <span class="text nav-text">Transacciones</span>
                         </a>
@@ -76,7 +73,7 @@ if(isset($_POST['cerrarSesion'])){
                     </li>
 
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="historial.php">
                             <i class='bx bx-wallet icon' ></i>
                             <span class="text nav-text">Historial</span>
                         </a>
@@ -93,17 +90,7 @@ if(isset($_POST['cerrarSesion'])){
                     </a>
                 </li>
 
-                <li class="mode">
-                    <div class="sun-moon">
-                        <i class='bx bx-moon icon moon'></i>
-                        <i class='bx bx-sun icon sun'></i>
-                    </div>
-                    <span class="mode-text text">Dark mode</span>
-
-                    <div class="toggle-switch">
-                        <span class="switch"></span>
-                    </div>
-                </li>
+               
                 
             </div>
         </div>
