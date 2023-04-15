@@ -1,22 +1,20 @@
-<?php 
+<?php
+    class Database {
+        public $servidor = 'localhost';
+        public $usuario = 'root';
+        public $password = '';
+        public $database = 'bancavirtual';
+        public $port = 3306;
 
-    class Database{
-        private $servername;
-        private $user;
-        private $password;
-        private $dbname;
-
-        public function __construct(){
-            $this->servername = 'localhost';
-            $this->user = 'root';
-            $this->password = '';
-            $this->dbname = 'bancavirtual';
+        public function conectar() {
+            return mysqli_connect(
+                $this->servidor,
+                $this->usuario,
+                $this->password,
+                $this->database,
+                $this->port
+            );
         }
-
-        public function connect(){
-            $conn = new mysqli($this->servername,$this->user,$this->password,$this->dbname);
-            return $conn;
-        }
-
-
     }
+
+?>
