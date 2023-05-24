@@ -4,7 +4,7 @@
         public $usuario = 'root';
         public $password = '';
         public $database = 'bancavirtual';
-        public $port = 3306;
+        public $port = 82;
 
         public function conectar() {
             return mysqli_connect(
