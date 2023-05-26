@@ -1,11 +1,4 @@
 <?php
-session_start();
-$sessData = !empty($_SESSION['sessData']) ? $_SESSION['sessData'] : '';
-if (!empty($sessData['status']['msg'])) {
-    $statusMsg = $sessData['status']['msg'];
-    $statusMsgType = $sessData['status']['type'];
-    unset($_SESSION['sessData']['status']);
-}
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['resetSubmit'])) {
     // Verificar si se han enviado las contraseñas
@@ -27,11 +20,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['resetSubmit'])) {
             die("Failed to connect with MySQL: " . $conn->connect_error);
         }
 
-        // Obtener el correo de la sesión
-        $email = $_SESSION['email'];
-
         // Buscar la contraseña actual en la base de datos
-        $sql = "SELECT password FROM infocliente WHERE Email = '$email'";
+        $sql = "SELECT password FROM infocliente WHERE password = '$actualPassword'";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
@@ -44,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['resetSubmit'])) {
                 if ($newPassword === $confirmPassword) {
                     // Actualizar la contraseña en la tabla "infocliente"
                     $newHashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
-                    $updateSql = "UPDATE infocliente SET password = '$newHashedPassword' WHERE Email = '$email'";
+                    $updateSql = "UPDATE infocliente SET password = '$newHashedPassword' WHERE password = '$actualPassword'";
                     if ($conn->query($updateSql) === true) {
                         $statusMsg = "Contraseña actualizada correctamente";
                         $statusMsgType = "success";
@@ -61,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['resetSubmit'])) {
                 $statusMsgType = "error";
             }
         } else {
-            $statusMsg = "Correo no encontrado en la base de datos";
+            $statusMsg = "No se encontró el cliente en la base de datos";
             $statusMsgType = "error";
         }
 
