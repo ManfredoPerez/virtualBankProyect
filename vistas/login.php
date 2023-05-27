@@ -31,6 +31,8 @@ session_start();
                 <input type="password" placeholder="Contraseña" name="password" id="Password" />
               </div>
                 <button type="submit" class="btn btn-sm btn-block btn-primary">Iniciar Sesion</button>
+
+                <a href="forgotPassword.php" class="forgot-password-link" style="color: black;">¿Has olvidado tu contraseña?</a>
           </form>
 
 
