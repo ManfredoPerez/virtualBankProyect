@@ -30,8 +30,6 @@ if (!empty($sessData['status']['msg'])) {
         <h5>Si necesitas más ayuda, contáctate con el administrador.</h5>
     </div>
     <?php
-    include 'user.php';
-    $user = new User();
     if (isset($_POST['forgotSubmit'])) {
         // Establecer la conexión a la base de datos (rellena los valores correspondientes)
 		
@@ -50,40 +48,14 @@ if (!empty($sessData['status']['msg'])) {
         // Obtener el correo ingresado
         $email = $_POST['email'];
         // Verificar si el correo existe en la tabla "infocliente"
-        $sql = "SELECT Email, Nombre FROM infocliente WHERE Email = '$email'";
+        $sql = "SELECT Email FROM infocliente WHERE Email = '$email'";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
-           
-            $nom = $row['Nombre'];
-            $to = $row['Email'];
-            // El correo existe en la tabla
-            // Puedes realizar las acciones correspondientes aquí, como enviar el correo de restablecimiento de contraseña
-            $resetPassLink = 'http://localhost:82/virtualBankProyect/vistas/resetPassword.php?fp_code=';
-
-            // Enviar correo de restablecimiento de contraseña
-            $subject = "Solicitud de Cambio de Contraseña";
-            $mailContent = 'Estimad@ '.$nom.', 
-            <br/><br/>Recientemente se envió una solicitud para restablecer una contraseña para su cuenta. Si esto fue un error, simplemente ignore este correo electrónico y no pasará nada.
-            <br/>Para restablecer su contraseña, visite el siguiente enlace: <a href="'.$resetPassLink.'">'.$resetPassLink.'</a>
-            <br/><br/>Saludos,
-            <br/>
-            <br/>Edvin 
-            <br/>';                
-                
-            // Establecer encabezados para enviar el correo HTML
-            $headers = "MIME-Version: 1.0" . "\r\n";
-            $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-            // Establecer encabezado adicional
-            $headers .= 'From: banckavirtual.com' . "\r\n";
-            // Enviar correo
-            
-            if (mail($to, $subject, $mailContent, $headers)) {
-                echo "Correo enviado satisfactoriamente";
-            } else {
-                echo "Error al enviar el correo";
-            }
+            // Redirigir a la página resetPassword.php pasando el correo como parámetro en la URL
+            header("Location: resetPassword.php");
+            exit();
         } else {
             // El correo no existe en la tabla
             echo "Correo no encontrado en la base de datos";
